@@ -7,9 +7,23 @@
 
 import SwiftUI
 import SwiftData
+import Firebase
+import FirebaseCore
+import FirebaseAuth
+
 @main
 struct pinsApp: App {
     @AppStorage("auth_token") var authToken: String?
+    
+    @State
+    var authManager: AuthManager
+    
+    init() {
+        FirebaseApp.configure()
+        authManager = AuthManager()
+//        Auth.auth().useEmulator(withHost:"localhost", port:9099)
+    }
+    
     // MARK: swiftdata 처리할 때 살리기
     //    var sharedModelContainer: ModelContainer = {
     //        let schema = Schema([
@@ -27,6 +41,7 @@ struct pinsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(authManager)
         }
         //        .modelContainer(sharedModelContainer)
     }

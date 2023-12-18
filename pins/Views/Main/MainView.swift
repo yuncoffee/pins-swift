@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(AuthManager.self)
+    var authManager
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Hello, World!")
+            Button {
+                authManager.signOut()
+            } label: {
+                Text("로그아웃")
+            }
+        }
     }
 }
 
 #Preview {
     MainView()
+        .environment(AuthManager())
 }

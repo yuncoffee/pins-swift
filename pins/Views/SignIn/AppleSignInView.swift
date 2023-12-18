@@ -1,35 +1,15 @@
 //
-//  ContentView.swift
+//  AppleSignInView.swift
 //  pins
 //
-//  Created by yuncoffee on 12/13/23.
+//  Created by yuncoffee on 12/18/23.
 //
 
 import SwiftUI
-//import SwiftData
 import AuthenticationServices
 
-struct AppleUser: Codable {
-    let userId: String
-    let firstName: String
-    let lastName: String
-    let email: String
-    
-    init?(credentials: ASAuthorizationAppleIDCredential) {
-        guard let firstName = credentials.fullName?.givenName,
-              let lastName = credentials.fullName?.familyName,
-              let email = credentials.email
-        else { return nil }
-        
-        self.userId = credentials.user
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-    }
-}
-
-struct ContentView: View {
-    @Environment(\.colorScheme) 
+struct AppleSignInView: View {
+    @Environment(\.colorScheme)
     var colorScheme
     
     @AppStorage("userId")
@@ -56,10 +36,10 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AppleSignInView()
 }
 
-extension ContentView {
+extension AppleSignInView {
     func signInWithAppleConfig(_ request: ASAuthorizationAppleIDRequest) {
         request.requestedScopes = [.fullName, .email]
     }

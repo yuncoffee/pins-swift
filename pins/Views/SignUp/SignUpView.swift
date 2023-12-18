@@ -1,8 +1,8 @@
 //
-//  SignInView.swift
+//  SignUpView.swift
 //  pins
 //
-//  Created by yuncoffee on 12/13/23.
+//  Created by yuncoffee on 12/18/23.
 //
 
 import SwiftUI
@@ -11,20 +11,29 @@ import FirebaseAnalyticsSwift
 private enum FocusableField: Hashable {
     case email
     case password
+    case confirmPassword
 }
 
-struct SignInView: View {
+struct SignUpView: View {
     @Environment(AuthManager.self)
     private var authManager
     @Environment(\.dismiss)
     var dismiss
     
-    @FocusState
-    private var focus: FocusableField?
+    @FocusState private var focus: FocusableField?
     
     var body: some View {
         @Bindable var authManager = authManager
         VStack {
+            Image("SignUp")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(minHeight: 300, maxHeight: 400)
+            Text("Sign up")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
             HStack {
                 Image(systemName: "at")
                 TextField("Email", text: $authManager.email)
@@ -39,27 +48,44 @@ struct SignInView: View {
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 4)
+            
             HStack {
                 Image(systemName: "lock")
                 SecureField("Password", text: $authManager.password)
                     .focused($focus, equals: .password)
-                    .submitLabel(.go)
+                    .submitLabel(.next)
                     .onSubmit {
-                        signInWithEmailPassword()
+                        self.focus = .confirmPassword
                     }
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 8)
+            
+            HStack {
+                Image(systemName: "lock")
+                SecureField("Confirm password", text: $authManager.confirmPassword)
+                    .focused($focus, equals: .confirmPassword)
+                    .submitLabel(.go)
+                    .onSubmit {
+                        signUpWithEmailPassword()
+                    }
+            }
+            .padding(.vertical, 6)
+            .background(Divider(), alignment: .bottom)
+            .padding(.bottom, 8)
+            
+            
             if !authManager.errorMessage.isEmpty {
                 VStack {
                     Text(authManager.errorMessage)
                         .foregroundColor(Color(UIColor.systemRed))
                 }
             }
-            Button(action: signInWithEmailPassword) {
+            
+            Button(action: signUpWithEmailPassword) {
                 if authManager.authenticationState != .authenticating {
-                    Text("Login")
+                    Text("Sign up")
                         .padding(.vertical, 8)
                         .frame(maxWidth: .infinity)
                 }
@@ -73,27 +99,27 @@ struct SignInView: View {
             .disabled(!authManager.isValid)
             .frame(maxWidth: .infinity)
             .buttonStyle(.borderedProminent)
+            
             HStack {
-                Text("Don't have an account yet?")
-                Button {
-                    authManager.switchFlow()
-                } label: {
-                    Text("Sign up")
+                Text("Already have an account?")
+                Button(action: { authManager.switchFlow() }) {
+                    Text("Log in")
                         .fontWeight(.semibold)
                         .foregroundColor(.blue)
                 }
             }
             .padding([.top, .bottom], 50)
+            
         }
         .listStyle(.plain)
         .padding()
     }
 }
 
-extension SignInView {
-    private func signInWithEmailPassword() {
+extension SignUpView {
+    private func signUpWithEmailPassword() {
         Task {
-            if await authManager.signInWithEmailPassword() == true {
+            if await authManager.signUpWithEmailPassword() {
                 dismiss()
             }
         }
@@ -101,11 +127,5 @@ extension SignInView {
 }
 
 #Preview {
-    SignInView()
-}
-
-extension SignInView {
-    final class SignInViewModel {
-        
-    }
+    SignUpView()
 }
