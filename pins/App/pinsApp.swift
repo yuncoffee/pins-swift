@@ -16,6 +16,9 @@ struct pinsApp: App {
     @AppStorage("auth_token") var authToken: String?
     
     @State
+    private var safeAreaInsets: (top: CGFloat, bottom: CGFloat) = (0, 0)
+    
+    @State
     var authManager: AuthManager
     
     init() {
@@ -41,8 +44,20 @@ struct pinsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.safeAreaInsets, safeAreaInsets)
                 .environment(authManager)
         }
         //        .modelContainer(sharedModelContainer)
+    }
+}
+
+private struct SafeAreaInsetsEnvironmentKey: EnvironmentKey {
+    static let defaultValue: (top: CGFloat, bottom: CGFloat) = (0, 0)
+}
+
+extension EnvironmentValues {
+    var safeAreaInsets: (top: CGFloat, bottom: CGFloat) {
+        get { self[SafeAreaInsetsEnvironmentKey.self] }
+        set { self[SafeAreaInsetsEnvironmentKey.self] = newValue }
     }
 }

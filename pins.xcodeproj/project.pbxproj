@@ -13,6 +13,7 @@
 		20543DD32B3073DE00A69BE6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD22B3073DE00A69BE6 /* FirebaseAuth */; };
 		20543DD52B3073DE00A69BE6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD42B3073DE00A69BE6 /* FirebaseFirestore */; };
 		20543DD82B31C34100A69BE6 /* MapkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DD72B31C34100A69BE6 /* MapkitManager.swift */; };
+		20543DDD2B31DDE000A69BE6 /* MapControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DDC2B31DDE000A69BE6 /* MapControlView.swift */; };
 		206261B92B303A5500E4E094 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 206261B82B303A5500E4E094 /* .gitignore */; };
 		206261D22B3043AD00E4E094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 206261D12B3043AD00E4E094 /* GoogleService-Info.plist */; };
 		206261D42B30464500E4E094 /* AppleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206261D32B30464500E4E094 /* AppleSignInView.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		20543DD72B31C34100A69BE6 /* MapkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapkitManager.swift; sourceTree = "<group>"; };
+		20543DDC2B31DDE000A69BE6 /* MapControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControlView.swift; sourceTree = "<group>"; };
 		206261B82B303A5500E4E094 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		206261D12B3043AD00E4E094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		206261D32B30464500E4E094 /* AppleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20543DD92B31DD5600A69BE6 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				20543DDC2B31DDE000A69BE6 /* MapControlView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		206261B42B3038DF00E4E094 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +273,7 @@
 		208313F62B29832A00DCBE0E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				20543DD92B31DD5600A69BE6 /* Map */,
 				208313F72B29834100DCBE0E /* MainView.swift */,
 			);
 			path = Main;
@@ -364,11 +375,12 @@
 			};
 			buildConfigurationList = 208313B92B297DE000DCBE0E /* Build configuration list for PBXProject "pins" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 208313B52B297DE000DCBE0E;
 			packageReferences = (
@@ -425,6 +437,7 @@
 				208313F32B29805D00DCBE0E /* SampleContentView.swift in Sources */,
 				208313F82B29834100DCBE0E /* MainView.swift in Sources */,
 				206261DE2B3049C100E4E094 /* SignUpView.swift in Sources */,
+				20543DDD2B31DDE000A69BE6 /* MapControlView.swift in Sources */,
 				206261D42B30464500E4E094 /* AppleSignInView.swift in Sources */,
 				206261E22B304A5A00E4E094 /* AuthManager.swift in Sources */,
 				20D369E02B30616D00642EF8 /* OnboardingView.swift in Sources */,
@@ -595,6 +608,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pins/Bundle/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 정보를 표시합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -610,7 +624,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuncoffee.pins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -635,6 +649,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pins/Bundle/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 정보를 표시합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -650,7 +665,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuncoffee.pins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
