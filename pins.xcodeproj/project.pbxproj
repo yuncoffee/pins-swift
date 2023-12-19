@@ -12,6 +12,7 @@
 		20543DD12B3073DE00A69BE6 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD02B3073DE00A69BE6 /* FirebaseAppCheck */; };
 		20543DD32B3073DE00A69BE6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD22B3073DE00A69BE6 /* FirebaseAuth */; };
 		20543DD52B3073DE00A69BE6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD42B3073DE00A69BE6 /* FirebaseFirestore */; };
+		20543DD82B31C34100A69BE6 /* MapkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DD72B31C34100A69BE6 /* MapkitManager.swift */; };
 		206261B92B303A5500E4E094 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 206261B82B303A5500E4E094 /* .gitignore */; };
 		206261D22B3043AD00E4E094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 206261D12B3043AD00E4E094 /* GoogleService-Info.plist */; };
 		206261D42B30464500E4E094 /* AppleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206261D32B30464500E4E094 /* AppleSignInView.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20543DD72B31C34100A69BE6 /* MapkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapkitManager.swift; sourceTree = "<group>"; };
 		206261B82B303A5500E4E094 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		206261D12B3043AD00E4E094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		206261D32B30464500E4E094 /* AppleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInView.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				206261E02B304A5000E4E094 /* shared */,
+				20543DD72B31C34100A69BE6 /* MapkitManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				206261D42B30464500E4E094 /* AppleSignInView.swift in Sources */,
 				206261E22B304A5A00E4E094 /* AuthManager.swift in Sources */,
 				20D369E02B30616D00642EF8 /* OnboardingView.swift in Sources */,
+				20543DD82B31C34100A69BE6 /* MapkitManager.swift in Sources */,
 				206261DB2B3046CE00E4E094 /* AppleUser.swift in Sources */,
 				208313C22B297DE000DCBE0E /* pinsApp.swift in Sources */,
 			);
@@ -591,6 +595,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pins/Bundle/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 정보를 표시합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -630,6 +635,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = pins/Bundle/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치 정보를 표시합니다.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
