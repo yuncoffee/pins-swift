@@ -46,7 +46,7 @@ extension MapControlView {
         request.resultTypes = .pointOfInterest
         request.region = MKCoordinateRegion(
             center: .devHouse,
-            span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
+            span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25)
         )
         
         Task {

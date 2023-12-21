@@ -14,7 +14,6 @@ struct ContentView: View {
     @State
     var vm = ContentVM()
     
-    
     var body: some View {
         NavigationStack {
             @Bindable var vm = vm
@@ -34,7 +33,9 @@ struct ContentView: View {
                             }
                         }
                 case .authenticated:
-                    MainView()
+//                    MainView()
+//                        .environment(vm)
+                    SearchableMap()
                         .environment(vm)
                 }
             }

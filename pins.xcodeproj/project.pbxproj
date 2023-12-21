@@ -14,6 +14,7 @@
 		20543DD52B3073DE00A69BE6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 20543DD42B3073DE00A69BE6 /* FirebaseFirestore */; };
 		20543DD82B31C34100A69BE6 /* MapkitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DD72B31C34100A69BE6 /* MapkitManager.swift */; };
 		20543DDD2B31DDE000A69BE6 /* MapControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DDC2B31DDE000A69BE6 /* MapControlView.swift */; };
+		20543DDF2B32AE8100A69BE6 /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20543DDE2B32AE8100A69BE6 /* MapSheetView.swift */; };
 		206261B92B303A5500E4E094 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 206261B82B303A5500E4E094 /* .gitignore */; };
 		206261D22B3043AD00E4E094 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 206261D12B3043AD00E4E094 /* GoogleService-Info.plist */; };
 		206261D42B30464500E4E094 /* AppleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206261D32B30464500E4E094 /* AppleSignInView.swift */; };
@@ -33,6 +34,7 @@
 		208313F82B29834100DCBE0E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208313F72B29834100DCBE0E /* MainView.swift */; };
 		208313FA2B29835900DCBE0E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208313F92B29835900DCBE0E /* SignInView.swift */; };
 		20D369E02B30616D00642EF8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D369DF2B30616D00642EF8 /* OnboardingView.swift */; };
+		20EC0D892B32CA5B007295A7 /* SearchableMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC0D882B32CA5B007295A7 /* SearchableMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 /* Begin PBXFileReference section */
 		20543DD72B31C34100A69BE6 /* MapkitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapkitManager.swift; sourceTree = "<group>"; };
 		20543DDC2B31DDE000A69BE6 /* MapControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControlView.swift; sourceTree = "<group>"; };
+		20543DDE2B32AE8100A69BE6 /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
 		206261B82B303A5500E4E094 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		206261D12B3043AD00E4E094 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		206261D32B30464500E4E094 /* AppleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleSignInView.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		208313F72B29834100DCBE0E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		208313F92B29835900DCBE0E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		20D369DF2B30616D00642EF8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		20EC0D882B32CA5B007295A7 /* SearchableMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				20543DDC2B31DDE000A69BE6 /* MapControlView.swift */,
+				20EC0D882B32CA5B007295A7 /* SearchableMap.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			children = (
 				20543DD92B31DD5600A69BE6 /* Map */,
 				208313F72B29834100DCBE0E /* MainView.swift */,
+				20543DDE2B32AE8100A69BE6 /* MapSheetView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -430,11 +436,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20543DDF2B32AE8100A69BE6 /* MapSheetView.swift in Sources */,
 				208313FA2B29835900DCBE0E /* SignInView.swift in Sources */,
 				208313C42B297DE000DCBE0E /* ContentView.swift in Sources */,
 				208313C62B297DE000DCBE0E /* Item.swift in Sources */,
 				206261D72B30466C00E4E094 /* EmailSignInView.swift in Sources */,
 				208313F32B29805D00DCBE0E /* SampleContentView.swift in Sources */,
+				20EC0D892B32CA5B007295A7 /* SearchableMap.swift in Sources */,
 				208313F82B29834100DCBE0E /* MainView.swift in Sources */,
 				206261DE2B3049C100E4E094 /* SignUpView.swift in Sources */,
 				20543DDD2B31DDE000A69BE6 /* MapControlView.swift in Sources */,

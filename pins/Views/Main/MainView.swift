@@ -9,14 +9,9 @@ import SwiftUI
 import MapKit
 
 struct MainView: View {
-    @Environment(\.safeAreaInsets)
-    var safeAreaInsets
     @Environment(AuthManager.self)
     var authManager
     
-    @State
-    private var region = MKCoordinateRegion(center: .devHouse, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-  
     @State
     private var visibleRegion: MKCoordinateRegion?
     
@@ -24,38 +19,27 @@ struct MainView: View {
     private var position: MapCameraPosition = .automatic
     
     @State
-    private var searchResults: [MKMapItem] = []
-    
+    private var searchResults: [SearchResult] = []
     @State
-    private var selectedResult: MKMapItem? {
-        didSet {
-            print(selectedResult?.name)
-        }
-    }
+    private var selectedLocation: SearchResult?
     
     @State
     private var isSheetActive = true
-
-    @State var selectedDetent: PresentationDetent = .min
-
+    
+    @State
+    var selectedDetent: PresentationDetent = .min
+    
     private let screenHeight = UIScreen.main.bounds.size.height
     private let availableDetents: Set<PresentationDetent> = [.min, .medium, .large]
     
     var body: some View {
-        Map(position: $position, selection: $selectedResult) {
+        Map(position: $position, selection: $selectedLocation) {
             Marker("House", systemImage: "house.fill", coordinate: .devHouse)
-                .tint(.mint)
-//            Annotation("House2", coordinate: .devHouse2) {
-//                Image(systemName: "car.fill")
-//                    .padding()
-//                    .foregroundStyle(.white)
-//                    .background(Color.green)
-//                    .clipShape(Circle())
-//            }
-            .annotationTitles(.hidden)
+                .annotationTitles(.hidden)
             ForEach(searchResults, id: \.self) { result in
-                Marker(item: result)
-                    .tag(result)
+                Marker(coordinate: result.location) {
+                    Image(systemName: "mappin")
+                }
             }
             UserAnnotation()
         }
@@ -64,53 +48,53 @@ struct MainView: View {
             MapUserLocationButton()
                 .buttonBorderShape(.circle)
             MapScaleView()
-                .mapControlVisibility(.automatic)
             MapPitchToggle()
                 .buttonBorderShape(.circle)
-                .mapControlVisibility(.automatic)
             MapCompass()
-                .mapControlVisibility(.automatic)
         }
-//        .safeAreaPadding(.bottom, 16)
-//        .safeAreaInset(edge: .bottom) {
-//            MapControlView(searchResults: $searchResults, visibleRegion: $visibleRegion)
-//                .padding(.horizontal, 16)
-//                .frame(maxWidth: .infinity, alignment: .trailing)
-//                .offset(y: selectedDetent == .min ? -(56 + 8) : -((screenHeight / 2) + 8))
-//                .border(.red)
-//        }
-//        .onAppear {
-//            position = .userLocation(fallback: .automatic)
-//        }
-        .onChange(of: searchResults) {
-            position = .automatic
-        }
-        .onMapCameraChange { context in
-            visibleRegion = context.region
-        }
-//        .animation(.default, value: selectedDetent)
-//        .sheet(isPresented: $isSheetActive, onDismiss: didDismiss) {
-//            VStack {
-//                Text("Hello, World!")
-//                Button {
-//                    authManager.signOut()
-//                } label: {
-//                    Text("로그아웃")
-//                }
+        .animation(.default, value: selectedDetent)
+        .safeAreaInset(edge: .bottom) {
+            //            MapControlView(searchResults: $searchResults, visibleRegion: $visibleRegion)
+            //                .padding(.horizontal, 16)
+            //                .frame(maxWidth: .infinity, alignment: .trailing)
+            //                .offset(y: selectedDetent == .min ? -(56 + 8) : -((screenHeight / 2) + 8))
+            //                .border(.red)
+//            if selectedLocation != nil {
+//                LookAroundPreview(scene: $scene, allowsNavigation: false, badgePosition: .bottomTrailing)
+//                    .frame(height: 150)
+//                    .clipShape(RoundedRectangle(cornerRadius: 12))
+//                    .safeAreaPadding(.bottom, 40)
+//                    .padding(.horizontal, 20)
 //            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .border(.blue)
-//            .presentationDetents(availableDetents, selection: $selectedDetent)
-//            .presentationBackgroundInteraction(.enabled(upThrough: .medium))
-//            .interactiveDismissDisabled()
-//            .ignoresSafeArea()
-//        }
+        }
+        .sheet(isPresented: $isSheetActive) {
+            MapSheetView(searchResults: $searchResults)
+                .presentationBackground(.regularMaterial)
+                .presentationDetents(availableDetents, selection: $selectedDetent)
+                .presentationBackgroundInteraction(.enabled(upThrough: .medium))
+                .interactiveDismissDisabled()
+            
+        }
+        .onAppear {
+            position = .userLocation(fallback: .automatic)
+        }
+        .onChange(of: selectedLocation) {
+            print(selectedLocation?.location)
+//            isSheetActive = selectedLocation == nil
+        }
+        .onChange(of: searchResults) {
+            print(searchResults.count)
+//            position = .automatic
+            if let firstResult = searchResults.first, searchResults.count == 1 {
+                selectedLocation = firstResult
+            }
+        }
     }
     
-    func didDismiss() {
-        // Handle the dismissing action.
-        isSheetActive = true
-    }
+    private func fetchScene(for coordinate: CLLocationCoordinate2D) async throws -> MKLookAroundScene? {
+           let lookAroundScene = MKLookAroundSceneRequest(coordinate: coordinate)
+           return try await lookAroundScene.scene
+       }
 }
 
 extension MainView {

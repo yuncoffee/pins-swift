@@ -14,16 +14,17 @@ import FirebaseAuth
 @main
 struct pinsApp: App {
     @AppStorage("auth_token") var authToken: String?
-    
     @State
     private var safeAreaInsets: (top: CGFloat, bottom: CGFloat) = (0, 0)
-    
+    @State
+    private var mapkitManager: MapkitManager
     @State
     var authManager: AuthManager
     
     init() {
         FirebaseApp.configure()
         authManager = AuthManager()
+        mapkitManager = MapkitManager(completer: .init())
 //        Auth.auth().useEmulator(withHost:"localhost", port:9099)
     }
     
@@ -46,6 +47,7 @@ struct pinsApp: App {
             ContentView()
                 .environment(\.safeAreaInsets, safeAreaInsets)
                 .environment(authManager)
+                .environment(mapkitManager)
         }
         //        .modelContainer(sharedModelContainer)
     }
