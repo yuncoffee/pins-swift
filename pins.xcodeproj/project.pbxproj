@@ -34,7 +34,6 @@
 		208313F82B29834100DCBE0E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208313F72B29834100DCBE0E /* MainView.swift */; };
 		208313FA2B29835900DCBE0E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208313F92B29835900DCBE0E /* SignInView.swift */; };
 		20D369E02B30616D00642EF8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D369DF2B30616D00642EF8 /* OnboardingView.swift */; };
-		20EC0D892B32CA5B007295A7 /* SearchableMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC0D882B32CA5B007295A7 /* SearchableMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +81,6 @@
 		208313F72B29834100DCBE0E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		208313F92B29835900DCBE0E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		20D369DF2B30616D00642EF8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		20EC0D882B32CA5B007295A7 /* SearchableMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				20543DDC2B31DDE000A69BE6 /* MapControlView.swift */,
-				20EC0D882B32CA5B007295A7 /* SearchableMap.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -442,7 +439,6 @@
 				208313C62B297DE000DCBE0E /* Item.swift in Sources */,
 				206261D72B30466C00E4E094 /* EmailSignInView.swift in Sources */,
 				208313F32B29805D00DCBE0E /* SampleContentView.swift in Sources */,
-				20EC0D892B32CA5B007295A7 /* SearchableMap.swift in Sources */,
 				208313F82B29834100DCBE0E /* MainView.swift in Sources */,
 				206261DE2B3049C100E4E094 /* SignUpView.swift in Sources */,
 				20543DDD2B31DDE000A69BE6 /* MapControlView.swift in Sources */,

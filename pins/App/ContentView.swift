@@ -33,10 +33,10 @@ struct ContentView: View {
                             }
                         }
                 case .authenticated:
-//                    MainView()
-//                        .environment(vm)
-                    SearchableMap()
+                    MainView()
                         .environment(vm)
+//                    SearchableMap()
+//                        .environment(vm)
                 }
             }
         }

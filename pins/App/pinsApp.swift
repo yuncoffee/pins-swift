@@ -24,7 +24,7 @@ struct pinsApp: App {
     init() {
         FirebaseApp.configure()
         authManager = AuthManager()
-        mapkitManager = MapkitManager(completer: .init())
+        mapkitManager = MapkitManager()
 //        Auth.auth().useEmulator(withHost:"localhost", port:9099)
     }
     

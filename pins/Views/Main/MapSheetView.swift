@@ -19,9 +19,6 @@ struct MapSheetView: View {
     @State
     private var isSearching = false
     
-    @Binding
-    var searchResults: [SearchResult]
-    
     var body: some View {
         VStack(spacing: .zero) {
             HStack {
@@ -30,7 +27,7 @@ struct MapSheetView: View {
                     .autocorrectionDisabled()
                     .onSubmit {
                         Task {
-                            searchResults = (try? await mapkitManager.search(with: search)) ?? []
+//                            searchResults = (try? await mapkitManager.search(with: search)) ?? []
                         }
                     }
             }
@@ -41,47 +38,11 @@ struct MapSheetView: View {
             //                Text("로그아웃")
             //            }
             Spacer()
-            List {
-                ForEach(mapkitManager.completions) { completion in
-                    Button {
-                        if !isSearching {
-                            didTapOnCompletion(completion)
-                        }
-                    } label: {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(completion.title)
-                                .font(.headline)
-                                .fontDesign(.rounded)
-                            Text(completion.subTitle)
-                            if let url = completion.url {
-                                Link(url.absoluteString, destination: url)
-                                    .lineLimit(1)
-                            }
-                        }
-                    }
-                    .listRowBackground(Color.clear)
-                }
-            }
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
         }
         .offset(y: 16)
         .padding()
         .frame(alignment: .top)
         .border(.red)
-        .onChange(of: search) { _, _ in
-            mapkitManager.update(queryFragment: search)
-        }
-    }
-    
-    private func didTapOnCompletion(_ completion: SearchCompletions) {
-        Task {
-            isSearching = true
-            if let singleLocation = try? await mapkitManager.search(with: "\(completion.title) \(completion.subTitle)").first {
-                searchResults = [singleLocation]
-                isSearching = false
-            }
-        }
     }
 }
 
@@ -95,9 +56,6 @@ struct TextFieldGrayBackgroundColor: ViewModifier {
     }
 }
 #Preview {
-    @State
-    var searchResults: [SearchResult] = []
-    
-    return MapSheetView(searchResults: $searchResults)
+    return MapSheetView()
         .environment(AuthManager())
 }
